@@ -11,6 +11,7 @@ SET DISTRIBUTION_TOOL="DistributionTool.exe"
 SET STREAM_DECK_FILE="C:\Program Files\Elgato\StreamDeck\StreamDeck.exe"
 SET STREAM_DECK_LOAD_TIMEOUT=7
 
+dotnet build
 taskkill /f /im streamdeck.exe
 taskkill /f /im com.zaphop.nvidiabroadcast.exe
 timeout /t 2
