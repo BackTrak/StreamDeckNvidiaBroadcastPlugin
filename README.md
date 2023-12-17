@@ -15,3 +15,13 @@ After installation, go into nVidia Broadcast and select up to two effects under 
 * BarRaider: https://github.com/BarRaider/streamdeck-tools
 * James Clancey: README.md, EyeContact controller addition and install.bat cleanup
 * Jordan Hughes: Camera Lens SVG from https://www.svgrepo.com/svg/471144/camera-lens
+
+
+# Stream Info
+I stream every night at 10pm Central on Twitch. If you like League of Legends and a chill stream, come and check me out!
+
+https://www.twitch.tv/b4cktr4k
+
+
+
+
