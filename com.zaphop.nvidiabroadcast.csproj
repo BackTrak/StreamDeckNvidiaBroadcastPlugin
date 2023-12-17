@@ -100,6 +100,7 @@
   <ItemGroup>
     <Compile Include="NvidiaBroadcastConfig.cs" />
     <Compile Include="NvidiaBroadcastManager.cs" />
+    <Compile Include="PluginEyeContact.cs" />
     <Compile Include="PluginToggleControlBase.cs" />
     <Compile Include="PluginVignette.cs" />
     <Compile Include="PluginBackgroundReplacement.cs" />

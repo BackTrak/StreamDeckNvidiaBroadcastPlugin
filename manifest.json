@@ -69,6 +69,20 @@
       "SupportedInMultiActions": false,
       "Tooltip": "Toggles 'Vignette' in nVidia Broadcast.",
       "UUID": "com.zaphop.nvidiabroadcast.vignette"
+    },
+    {
+      "Icon": "Images/gray72",
+      "Name": "Eye Contact",
+      "States": [
+        {
+          "Image": "Images/gray72",
+          "TitleAlignment": "bottom",
+          "FontSize": "7"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Toggles 'Eye Contact' in nVidia Broadcast.",
+      "UUID": "com.zaphop.nvidiabroadcast.eycontact"
     }
   ],
   "SDKVersion": 2,
