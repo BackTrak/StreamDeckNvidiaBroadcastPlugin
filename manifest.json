@@ -1,107 +1,113 @@
 ﻿{
-  "Actions": [
-    {
-      "Icon": "Images/gray72",
-      "Name": "BG Remover",
-      "States": [
+    "Actions": [
         {
-          "Image": "Images/gray72",
-          "TitleAlignment": "bottom",
-          "FontSize": "7"
-        }
-      ],
-      "SupportedInMultiActions": false,
-      "Tooltip": "Toggles 'Remove the Background' in nVidia Broadcast.",
-      "UUID": "com.zaphop.nvidiabroadcast.backgroundremover"
-    },
-    {
-      "Icon": "Images/gray72",
-      "Name": "Auto Frame",
-      "States": [
+            "Icon": "Images/action20",
+            "Name": "Background Remover",
+            "States": [
+                {
+                    "Image": "Images/gray72",
+                    "TitleAlignment": "middle",
+                    "Title": "Background\nRemover",
+                    "FontSize": "7"
+                }
+            ],
+            "SupportedInMultiActions": false,
+            "Tooltip": "Toggles 'Remove the Background' in nVidia Broadcast.",
+            "UUID": "com.zaphop.nvidiabroadcast.backgroundremover"
+        },
         {
-          "Image": "Images/gray72",
-          "TitleAlignment": "bottom",
-          "FontSize": "7"
-        }
-      ],
-      "SupportedInMultiActions": false,
-      "Tooltip": "Toggles 'Auto Frame' in nVidia Broadcast.",
-      "UUID": "com.zaphop.nvidiabroadcast.autoframe"
-    },
-    {
-      "Icon": "Images/gray72",
-      "Name": "Background Blur",
-      "States": [
+            "Icon": "Images/action20",
+            "Name": "Auto Frame",
+            "States": [
+                {
+                    "Image": "Images/gray72",
+                    "TitleAlignment": "middle",
+                    "Title": "Auto Frame",
+                    "FontSize": "7"
+                }
+            ],
+            "SupportedInMultiActions": false,
+            "Tooltip": "Toggles 'Auto Frame' in nVidia Broadcast.",
+            "UUID": "com.zaphop.nvidiabroadcast.autoframe"
+        },
         {
-          "Image": "Images/gray72",
-          "TitleAlignment": "bottom",
-          "FontSize": "7"
-        }
-      ],
-      "SupportedInMultiActions": false,
-      "Tooltip": "Toggles 'Background Blur' in nVidia Broadcast.",
-      "UUID": "com.zaphop.nvidiabroadcast.backgroundblur"
-    },
-    {
-      "Icon": "Images/gray72",
-      "Name": "Background Replacement",
-      "States": [
+            "Icon": "Images/action20",
+            "Name": "Background Blur",
+            "States": [
+                {
+                    "Image": "Images/gray72",
+                    "TitleAlignment": "middle",
+                    "Title": "Background\nBlur",
+                    "FontSize": "7"
+                }
+            ],
+            "SupportedInMultiActions": false,
+            "Tooltip": "Toggles 'Background Blur' in nVidia Broadcast.",
+            "UUID": "com.zaphop.nvidiabroadcast.backgroundblur"
+        },
         {
-          "Image": "Images/gray72",
-          "TitleAlignment": "bottom",
-          "FontSize": "7"
-        }
-      ],
-      "SupportedInMultiActions": false,
-      "Tooltip": "Toggles 'Background Replacement' in nVidia Broadcast.",
-      "UUID": "com.zaphop.nvidiabroadcast.backgroundreplacement"
-    },
-    {
-      "Icon": "Images/gray72",
-      "Name": "Vignette",
-      "States": [
+            "Icon": "Images/action20",
+            "Name": "Background Replacement",
+            "States": [
+                {
+                    "Image": "Images/gray72",
+                    "TitleAlignment": "middle",
+                    "Title": "Background\nReplacement",
+                    "FontSize": "7"
+                }
+            ],
+            "SupportedInMultiActions": false,
+            "Tooltip": "Toggles 'Background Replacement' in nVidia Broadcast.",
+            "UUID": "com.zaphop.nvidiabroadcast.backgroundreplacement"
+        },
         {
-          "Image": "Images/gray72",
-          "TitleAlignment": "bottom",
-          "FontSize": "7"
-        }
-      ],
-      "SupportedInMultiActions": false,
-      "Tooltip": "Toggles 'Vignette' in nVidia Broadcast.",
-      "UUID": "com.zaphop.nvidiabroadcast.vignette"
-    },
-    {
-      "Icon": "Images/gray72",
-      "Name": "Eye Contact",
-      "States": [
+            "Icon": "Images/action20",
+            "Name": "Vignette",
+            "States": [
+                {
+                    "Image": "Images/gray72",
+                    "TitleAlignment": "middle",
+                    "Title": "Vignette",
+                    "FontSize": "7"
+                }
+            ],
+            "SupportedInMultiActions": false,
+            "Tooltip": "Toggles 'Vignette' in nVidia Broadcast.",
+            "UUID": "com.zaphop.nvidiabroadcast.vignette"
+        },
         {
-          "Image": "Images/gray72",
-          "TitleAlignment": "bottom",
-          "FontSize": "7"
+            "Icon": "Images/action20",
+            "Name": "Eye Contact",
+            "States": [
+                {
+                    "Image": "Images/gray72",
+                    "TitleAlignment": "middle",
+                    "Title": "Eye Contact",
+                    "FontSize": "7"
+                }
+            ],
+            "SupportedInMultiActions": false,
+            "Tooltip": "Toggles 'Eye Contact' in nVidia Broadcast.",
+            "UUID": "com.zaphop.nvidiabroadcast.eycontact"
         }
-      ],
-      "SupportedInMultiActions": false,
-      "Tooltip": "Toggles 'Eye Contact' in nVidia Broadcast.",
-      "UUID": "com.zaphop.nvidiabroadcast.eycontact"
+    ],
+    "SDKVersion": 2,
+    "Author": "Nick Pirocanac",
+    "CodePath": "com.zaphop.nvidiabroadcast.exe",
+    "Description": "nVidia Broadcast Controller",
+    "Name": "nVidia Broadcast Controller",
+    "Category": "nVidia Broadcast",
+    "CategoryIcon": "Images/categoryIcon",
+    "Icon": "Images/zhgold288",
+    "URL": "https://github.com/BackTrak/StreamDeckNvidiaBroadcastPlugin",
+    "Version": "1.0",
+    "OS": [
+        {
+            "Platform": "windows",
+            "MinimumVersion": "10"
+        }
+    ],
+    "Software": {
+        "MinimumVersion": "4.1"
     }
-  ],
-  "SDKVersion": 2,
-  "Author": "Nick Pirocanac",
-  "CodePath": "com.zaphop.nvidiabroadcast.exe",
-  "Description": "nVidia Broadcast Controller",
-  "Name": "nVidia Broadcast Controller",
-  "Category": "nVidia Broadcast",
-  "CategoryIcon": "Images/gray72",
-  "Icon": "Images/gray72",
-  "URL": "https://www.zaphop.com",
-  "Version": "1.0",
-  "OS": [
-    {
-      "Platform": "windows",
-      "MinimumVersion": "10"
-    }
-  ],
-  "Software": {
-    "MinimumVersion": "4.1"
-  }
 }

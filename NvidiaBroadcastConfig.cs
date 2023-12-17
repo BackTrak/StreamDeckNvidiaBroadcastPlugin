@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StreamDeckTest2
+namespace com.zaphop.nvidiabroadcast
 {
-    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
     public class Effect
     {
         public string Name { get; set; }
@@ -34,6 +33,4 @@ namespace StreamDeckTest2
         public int InputWidth { get; set; }
         public string Layer { get; set; }
     }
-
-
 }

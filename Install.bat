@@ -16,7 +16,7 @@ taskkill /f /im streamdeck.exe
 taskkill /f /im com.zaphop.nvidiabroadcast.exe
 timeout /t 2
 del %OUTPUT_DIR%\com.zaphop.nvidiabroadcast.streamDeckPlugin
-%DISTRIBUTION_TOOL% -b -i bin\Debug\com.zaphop.nvidiabroadcast.sdPlugin -o %OUTPUT_DIR%
+%DISTRIBUTION_TOOL% -b -i bin\Release\com.zaphop.nvidiabroadcast.sdPlugin -o %OUTPUT_DIR%
 rmdir %APPDATA%\Elgato\StreamDeck\Plugins\com.zaphop.nvidiabroadcast.sdPlugin /s /q
 START "" %STREAM_DECK_FILE%
 timeout /t %STREAM_DECK_LOAD_TIMEOUT%

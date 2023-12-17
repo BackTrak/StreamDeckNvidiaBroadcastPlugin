@@ -2,16 +2,13 @@
 using PInvoke;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using static PInvoke.User32;
 
-namespace StreamDeckTest2
+namespace com.zaphop.nvidiabroadcast
 {
     internal class NvidiaBroadcastManager
     {
@@ -44,31 +41,6 @@ namespace StreamDeckTest2
             return IsSettingEnabled(_configName);
         }
 
-        //public bool IsVirtualBackgroundRemovalEnabled()
-        //{
-        //    return IsSettingEnabled("BackgroundRemoval");
-        //}
-
-        //public bool IsAutoFrameEnabled()
-        //{
-        //    return IsSettingEnabled("FaceZoom");
-        //}
-
-        //public bool IsBackgroundBlurEnabled()
-        //{
-        //    return IsSettingEnabled("BackgroundBlur");
-        //}
-
-        //public bool IsBackgroundReplacementEnabled()
-        //{
-        //    return IsSettingEnabled("BackgroundReplacement");
-        //}
-
-        //public bool IsVignetteEnabled()
-        //{
-        //    return IsSettingEnabled("Vignette");
-        //}
-
         private bool IsSettingEnabled(string settingName)
         {
             string configPath = System.Environment.ExpandEnvironmentVariables(@"%ProgramData%\\NVIDIA\\NVIDIABroadcast\\Settings\\NvVirtualCamera\\config.json");
@@ -88,47 +60,6 @@ namespace StreamDeckTest2
                 Thread.Sleep(100);
             }
         }
-
-
-        //public void ToggleVirtualBackgroundRemoval()
-        //{
-        //    bool currentState = IsVirtualBackgroundRemovalEnabled();
-
-        //    while(currentState == IsVirtualBackgroundRemovalEnabled()) 
-        //        ToggleSetting("Background removal");
-        //}
-
-        //public void ToggleAutoFrame()
-        //{
-        //    bool currentState = IsAutoFrameEnabled();
-
-        //    while (currentState == IsAutoFrameEnabled())
-        //        ToggleSetting("Auto frame");
-        //}
-
-        //public void ToggleBackgroundBlur()
-        //{
-        //    bool currentState = IsBackgroundBlurEnabled();
-
-        //    while (currentState == IsBackgroundBlurEnabled())
-        //        ToggleSetting("Background blur");
-        //}
-
-        //public void ToggleBackgroundReplacement()
-        //{
-        //    bool currentState = IsBackgroundReplacementEnabled();
-
-        //    while (currentState == IsBackgroundReplacementEnabled())
-        //        ToggleSetting("Background replacement");
-        //}
-
-        //public void ToggleVignette()
-        //{
-        //    bool currentState = IsVignetteEnabled();
-
-        //    while (currentState == IsVignetteEnabled())
-        //        ToggleSetting("Vignette");
-        //}
 
         private bool ToggleSetting(string name)
         {

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StreamDeckTest2
+namespace com.zaphop.nvidiabroadcast
 {
     [PluginActionId("com.zaphop.nvidiabroadcast.backgroundremover")]
     public class PluginBackgroundRemover : PluginToggleControlBase
