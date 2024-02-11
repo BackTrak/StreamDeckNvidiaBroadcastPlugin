@@ -12,7 +12,7 @@ namespace com.zaphop.nvidiabroadcast
 {
     public class PluginToggleControlBase : KeypadBase
     {
-        private NvidiaBroadcastManager _nvidiaBroadcastManager;
+        private readonly NvidiaBroadcastManager _nvidiaBroadcastManager;
         private bool _wasEnabledOnLastTick = false;
 
         public PluginToggleControlBase(NvidiaBroadcastResourceID toggleResourceID, string configName, SDConnection connection, InitialPayload payload) : base(connection, payload)
@@ -43,11 +43,6 @@ namespace com.zaphop.nvidiabroadcast
         }
 
         public override void ReceivedGlobalSettings(ReceivedGlobalSettingsPayload payload) { }
-
-        private Task SaveSettings()
-        {
-            return Task.CompletedTask;
-        }
 
         private void UpdateToggleStatus()
         {

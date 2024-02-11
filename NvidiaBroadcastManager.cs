@@ -26,8 +26,8 @@ namespace com.zaphop.nvidiabroadcast
         [DllImport("shlwapi.dll", BestFitMapping = false, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = false, ThrowOnUnmappableChar = true)]
         public static extern int SHLoadIndirectString(string pszSource, StringBuilder pszOutBuf, int cchOutBuf, IntPtr ppvReserved);
 
-        private string _toggleName;
-        private string _configName;
+        private readonly string _toggleName;
+        private readonly string _configName;
 
         /// <summary>
         /// 
@@ -45,15 +45,15 @@ namespace com.zaphop.nvidiabroadcast
             var registryPath = "HKEY_LOCAL_MACHINE\\SOFTWARE\\NVIDIA Corporation\\Global\\NvBroadcast";
 
             // Get NVidia Broadcast UI installation directory.
-            var exeLocation = (string) Registry.GetValue(registryPath, "RBXAppPath", null);
-
-            if (exeLocation == null)
+            var exeLocation = (string) Registry.GetValue(registryPath, "RBXAppPath", null) ??
                 throw new Exception("Couldn't find NVidia Broadcast install location from: {registryPath}\\RBXAppPath");
 
             // This specifier is documented here: https://learn.microsoft.com/en-us/windows/win32/api/shlwapi/nf-shlwapi-shloadindirectstring
             var resourceFilename = $"@{exeLocation},-{(int) toggleResourceID}";
 
-            StringBuilder resourceString = new StringBuilder(1024);
+            var resourceString = new StringBuilder(1024);
+
+            
 
             if (SHLoadIndirectString(resourceFilename, resourceString, 1024, IntPtr.Zero) != 0)
                 throw new KeyNotFoundException($"Couldn't look up resource id: {toggleResourceID}({(int) toggleResourceID}) from {resourceFilename}");
@@ -88,10 +88,10 @@ namespace com.zaphop.nvidiabroadcast
 
         private bool ToggleSetting(string name)
         {
-            IntPtr rootWindowHwnd = PInvoke.User32.FindWindow("RTXVoiceWindowClass", null);
+            var rootWindowHwnd = PInvoke.User32.FindWindow("RTXVoiceWindowClass", null);
 
             EnumedWindow callBackPtr = GetWindowHandle;
-            List<IntPtr> windowHandles = new List<IntPtr>();
+            var windowHandles = new List<IntPtr>();
 
             GCHandle listHandle = GCHandle.Alloc(windowHandles);
 
@@ -109,7 +109,7 @@ namespace com.zaphop.nvidiabroadcast
 
                 if (User32.GetClassName(handle).Equals("ComboBox", StringComparison.InvariantCultureIgnoreCase) == true)
                 {
-                    StringBuilder windowText = new StringBuilder(255);
+                    var windowText = new StringBuilder(255);
                     SendMessage(handle, (uint)User32.WindowMessage.WM_GETTEXT, 255, windowText);
 
                     if (windowText.ToString().IndexOf(name, StringComparison.InvariantCultureIgnoreCase) >= 0)
@@ -155,10 +155,14 @@ namespace com.zaphop.nvidiabroadcast
         {
             GCHandle gch = GCHandle.FromIntPtr(arrayListPtr);
 
-            List<IntPtr> windowHandles = gch.Target as List<IntPtr>;
-
-            if (windowHandles == null)
+            // Not sure how this even compiles... where does windowHandles come from??
+            if (gch.Target is not List<IntPtr> windowHandles)
                 throw new ArgumentNullException(nameof(windowHandles));
+
+            //var windowHandles = gch.Target as List<IntPtr>;
+
+            //if (windowHandles == null)
+            //    throw new ArgumentNullException(nameof(windowHandles));
 
             windowHandles.Add(windowHandle);
             return true;
