@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.Windows.CsWin32.0.3.49-beta\build\net20\Microsoft.Windows.CsWin32.props" Condition="Exists('packages\Microsoft.Windows.CsWin32.0.3.49-beta\build\net20\Microsoft.Windows.CsWin32.props')" />
+  <Import Project="packages\Microsoft.Windows.WDK.Win32Metadata.0.9.9-experimental\build\net20\Microsoft.Windows.WDK.Win32Metadata.props" Condition="Exists('packages\Microsoft.Windows.WDK.Win32Metadata.0.9.9-experimental\build\net20\Microsoft.Windows.WDK.Win32Metadata.props')" />
+  <Import Project="packages\Microsoft.Windows.SDK.Win32Metadata.55.0.45-preview\build\net20\Microsoft.Windows.SDK.Win32Metadata.props" Condition="Exists('packages\Microsoft.Windows.SDK.Win32Metadata.55.0.45-preview\build\net20\Microsoft.Windows.SDK.Win32Metadata.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{4635D874-69C0-4010-BE46-77EF92EB1553}</ProjectGuid>
@@ -27,9 +31,11 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -50,6 +56,9 @@
   <ItemGroup>
     <Reference Include="CommandLine, Version=2.9.1.0, Culture=neutral, PublicKeyToken=5a870481e358d379, processorArchitecture=MSIL">
       <HintPath>packages\CommandLineParser.2.9.1\lib\net461\CommandLine.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Windows.SDK.Win32Docs, Version=0.1.42.13748, Culture=neutral, PublicKeyToken=7c40c7c34b1fcfe1, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Windows.SDK.Win32Docs.0.1.42-alpha\lib\netstandard2.0\Microsoft.Windows.SDK.Win32Docs.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -112,6 +121,7 @@
   <ItemGroup>
     <Compile Include="NvidiaBroadcastConfig.cs" />
     <Compile Include="NvidiaBroadcastManager.cs" />
+    <Compile Include="NvidiaBroadcastResourceID.cs" />
     <Compile Include="PluginEyeContact.cs" />
     <Compile Include="PluginToggleControlBase.cs" />
     <Compile Include="PluginVignette.cs" />
@@ -183,6 +193,7 @@
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="NativeMethods.txt" />
     <Content Include="previews\demo.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -202,5 +213,22 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="packages\Microsoft.Windows.CsWin32.0.3.49-beta\analyzers\cs\MessagePack.Annotations.dll" />
+    <Analyzer Include="packages\Microsoft.Windows.CsWin32.0.3.49-beta\analyzers\cs\MessagePack.dll" />
+    <Analyzer Include="packages\Microsoft.Windows.CsWin32.0.3.49-beta\analyzers\cs\Microsoft.Bcl.AsyncInterfaces.dll" />
+    <Analyzer Include="packages\Microsoft.Windows.CsWin32.0.3.49-beta\analyzers\cs\Microsoft.Windows.CsWin32.dll" />
+    <Analyzer Include="packages\Microsoft.Windows.CsWin32.0.3.49-beta\analyzers\cs\Microsoft.Windows.SDK.Win32Docs.dll" />
+    <Analyzer Include="packages\Microsoft.Windows.CsWin32.0.3.49-beta\analyzers\cs\System.Text.Encodings.Web.dll" />
+    <Analyzer Include="packages\Microsoft.Windows.CsWin32.0.3.49-beta\analyzers\cs\System.Text.Json.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.Windows.SDK.Win32Metadata.55.0.45-preview\build\net20\Microsoft.Windows.SDK.Win32Metadata.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Windows.SDK.Win32Metadata.55.0.45-preview\build\net20\Microsoft.Windows.SDK.Win32Metadata.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.Windows.WDK.Win32Metadata.0.9.9-experimental\build\net20\Microsoft.Windows.WDK.Win32Metadata.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Windows.WDK.Win32Metadata.0.9.9-experimental\build\net20\Microsoft.Windows.WDK.Win32Metadata.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.Windows.CsWin32.0.3.49-beta\build\net20\Microsoft.Windows.CsWin32.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Windows.CsWin32.0.3.49-beta\build\net20\Microsoft.Windows.CsWin32.props'))" />
+  </Target>
 </Project>

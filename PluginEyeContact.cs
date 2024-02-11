@@ -10,7 +10,7 @@ namespace com.zaphop.nvidiabroadcast
 	[PluginActionId("com.zaphop.nvidiabroadcast.eycontact")]
 	public class PluginEyeContact : PluginToggleControlBase
 	{
-		public PluginEyeContact(SDConnection connection, InitialPayload payload) : base("Eye Contact", "GazeWarp", connection, payload)
+		public PluginEyeContact(SDConnection connection, InitialPayload payload) : base(NvidiaBroadcastResourceID.EyeContact, "GazeWarp", connection, payload)
 		{
 		}
 	}

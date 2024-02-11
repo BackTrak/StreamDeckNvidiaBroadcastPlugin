@@ -13,7 +13,7 @@ namespace com.zaphop.nvidiabroadcast
     [PluginActionId("com.zaphop.nvidiabroadcast.backgroundremover")]
     public class PluginBackgroundRemover : PluginToggleControlBase
     {
-        public PluginBackgroundRemover(SDConnection connection, InitialPayload payload) : base("Background removal", "BackgroundRemoval", connection, payload)
+        public PluginBackgroundRemover(SDConnection connection, InitialPayload payload) : base(NvidiaBroadcastResourceID.BackgroundRemoval, "BackgroundRemoval", connection, payload)
         {
         }
     }

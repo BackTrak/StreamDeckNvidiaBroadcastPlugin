@@ -15,9 +15,9 @@ namespace com.zaphop.nvidiabroadcast
         private NvidiaBroadcastManager _nvidiaBroadcastManager;
         private bool _wasEnabledOnLastTick = false;
 
-        public PluginToggleControlBase(string toggleName, string configName, SDConnection connection, InitialPayload payload) : base(connection, payload)
+        public PluginToggleControlBase(NvidiaBroadcastResourceID toggleResourceID, string configName, SDConnection connection, InitialPayload payload) : base(connection, payload)
         {
-            _nvidiaBroadcastManager = new NvidiaBroadcastManager(toggleName, configName);
+            _nvidiaBroadcastManager = new NvidiaBroadcastManager(toggleResourceID, configName);
             UpdateToggleStatus();
         }
 

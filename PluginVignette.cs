@@ -13,7 +13,7 @@ namespace com.zaphop.nvidiabroadcast
     [PluginActionId("com.zaphop.nvidiabroadcast.vignette")]
     public class PluginVignette : PluginToggleControlBase
     {
-        public PluginVignette(SDConnection connection, InitialPayload payload) : base("Vignette", "Vignette", connection, payload)
+        public PluginVignette(SDConnection connection, InitialPayload payload) : base(NvidiaBroadcastResourceID.Vignette, "Vignette", connection, payload)
         {
         }
     }

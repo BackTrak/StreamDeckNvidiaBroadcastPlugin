@@ -13,7 +13,7 @@ namespace com.zaphop.nvidiabroadcast
     [PluginActionId("com.zaphop.nvidiabroadcast.backgroundreplacement")]
     public class PluginBackgroundReplacement : PluginToggleControlBase
     {
-        public PluginBackgroundReplacement(SDConnection connection, InitialPayload payload) : base("Background replacement", "BackgroundReplacement", connection, payload)
+        public PluginBackgroundReplacement(SDConnection connection, InitialPayload payload) : base(NvidiaBroadcastResourceID.BackgroundReplacement, "BackgroundReplacement", connection, payload)
         {
         }
     }

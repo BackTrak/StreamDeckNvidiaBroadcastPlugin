@@ -13,7 +13,7 @@ namespace com.zaphop.nvidiabroadcast
     [PluginActionId("com.zaphop.nvidiabroadcast.autoframe")]
     public class PluginAutoFrame : PluginToggleControlBase
     {
-        public PluginAutoFrame(SDConnection connection, InitialPayload payload) : base("Auto frame", "FaceZoom", connection, payload)
+        public PluginAutoFrame(SDConnection connection, InitialPayload payload) : base(NvidiaBroadcastResourceID.AutoFrame, "FaceZoom", connection, payload)
         {
         }
     }

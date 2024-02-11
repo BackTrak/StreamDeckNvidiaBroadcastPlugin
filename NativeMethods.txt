@@ -1,0 +1,9 @@
+﻿LoadLibrary
+FindResource
+LoadResource
+LockResource
+FreeResource
+GetLastError
+LoadString
+MKAEINTRESOURCE
+SHLoadIndirectString

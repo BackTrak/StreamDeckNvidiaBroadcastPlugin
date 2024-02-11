@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Win32;
+using Newtonsoft.Json;
 using PInvoke;
 using System;
 using System.Collections.Generic;
@@ -22,18 +23,42 @@ namespace com.zaphop.nvidiabroadcast
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool GetWindowPlacement(IntPtr hWnd, ref WINDOWPLACEMENT lpwndpl);
 
+        [DllImport("shlwapi.dll", BestFitMapping = false, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = false, ThrowOnUnmappableChar = true)]
+        public static extern int SHLoadIndirectString(string pszSource, StringBuilder pszOutBuf, int cchOutBuf, IntPtr ppvReserved);
+
         private string _toggleName;
         private string _configName;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="toggleName">The string from the combobox in the nVidia Broadcast Control Panel</param>
+        /// <param name="toggleResourceID">The Resource ID of the selection string from the combobox. This can be found by using Resource Hacker to find the resource text string. Locale is set by the current application globalization settings.</param>
         /// <param name="configName">The string from the config file that indicates when the option is enabled</param>
-        public NvidiaBroadcastManager(string toggleName, string configName)
+        public NvidiaBroadcastManager(NvidiaBroadcastResourceID toggleResourceID, string configName)
         {
-            _toggleName = toggleName;   
+            _toggleName = GetToggleNameFromResourceID(toggleResourceID);   
             _configName = configName;   
+        }
+
+        private string GetToggleNameFromResourceID(NvidiaBroadcastResourceID toggleResourceID)
+        {
+            var registryPath = "HKEY_LOCAL_MACHINE\\SOFTWARE\\NVIDIA Corporation\\Global\\NvBroadcast";
+
+            // Get NVidia Broadcast UI installation directory.
+            var exeLocation = (string) Registry.GetValue(registryPath, "RBXAppPath", null);
+
+            if (exeLocation == null)
+                throw new Exception("Couldn't find NVidia Broadcast install location from: {registryPath}\\RBXAppPath");
+
+            // This specifier is documented here: https://learn.microsoft.com/en-us/windows/win32/api/shlwapi/nf-shlwapi-shloadindirectstring
+            var resourceFilename = $"@{exeLocation},-{(int) toggleResourceID}";
+
+            StringBuilder resourceString = new StringBuilder(1024);
+
+            if (SHLoadIndirectString(resourceFilename, resourceString, 1024, IntPtr.Zero) != 0)
+                throw new KeyNotFoundException($"Couldn't look up resource id: {toggleResourceID}({(int) toggleResourceID}) from {resourceFilename}");
+
+            return resourceString.ToString();
         }
 
         public bool IsToggleEnabled()

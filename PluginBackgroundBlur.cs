@@ -13,7 +13,7 @@ namespace com.zaphop.nvidiabroadcast
     [PluginActionId("com.zaphop.nvidiabroadcast.backgroundblur")]
     public class PluginBackgroundBlur : PluginToggleControlBase
     {
-        public PluginBackgroundBlur(SDConnection connection, InitialPayload payload) : base("Background blur", "BackgroundBlur", connection, payload)
+        public PluginBackgroundBlur(SDConnection connection, InitialPayload payload) : base(NvidiaBroadcastResourceID.BackgroundBlur, "BackgroundBlur", connection, payload)
         {
         }
     }
