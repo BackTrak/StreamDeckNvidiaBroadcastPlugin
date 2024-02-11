@@ -5,3 +5,6 @@ LockResource
 FreeResource
 LoadString
 SHLoadIndirectString
+SetThreadLocale
+GetThreadLocale
+SetThreadUILanguage
