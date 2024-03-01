@@ -17,6 +17,9 @@ namespace com.zaphop.nvidiabroadcast
         BackgroundBlur = 186, // Background blur
         BackgroundReplacement = 187, // Background replacement
         EyeContact = 32873, // Eye contact
-        Vignette = 33048
+        Vignette = 33048,
+
+        MicNoiseRemoval = 184,
+        MicRoomEchoRemoval = 33083
     }
 }

@@ -8,7 +8,7 @@ To install, clone or download the repo.
    * Run the `install.bat`
 
 
-After installation, go into nVidia Broadcast and select up to two effects under the "Camera" tab. Then add the corresponding controls from this plugin into your Stream Deck. You will then be able to toggle the filters from the Stream Deck. 
+After installation, go into nVidia Broadcast and select up to two effects under the Microphone, Speakers or Camera tabs. Then add a control from the package to your stream deck. Select the toggle type that matches the effect in either position 1 or position 2 and you are ready to go!
 
 
 ### Thank Yous
@@ -18,7 +18,7 @@ After installation, go into nVidia Broadcast and select up to two effects under 
 
 
 # Stream Info
-I stream every night at 10pm Central on Twitch. If you like League of Legends and a chill stream, come and check me out!
+I stream every night at 9pm Central on Twitch. If you like League of Legends and a chill stream, come and check me out!
 
 https://www.twitch.tv/b4cktr4k
 

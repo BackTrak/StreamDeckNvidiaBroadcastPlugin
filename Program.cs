@@ -8,12 +8,15 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
+#pragma warning disable IDE0051 // Remove unused private members
+
 namespace com.zaphop.nvidiabroadcast
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            //ToggleAllControlsTest();
             //TestBroadcastManager();
 
             // Uncomment this line of code to allow for debugging
@@ -25,7 +28,7 @@ namespace com.zaphop.nvidiabroadcast
 
         private static void TestBroadcastManager()
         {
-            System.Globalization.CultureInfo ci = new System.Globalization.CultureInfo("pt-BR");
+            var ci = new System.Globalization.CultureInfo("pt-BR");
             System.Threading.Thread.CurrentThread.CurrentCulture = ci;
             System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
 
@@ -34,7 +37,19 @@ namespace com.zaphop.nvidiabroadcast
 
             var x = Windows.Win32.PInvoke.GetThreadLocale();
 
-            NvidiaBroadcastManager n = new NvidiaBroadcastManager(NvidiaBroadcastResourceID.AutoFrame, "FaceZoom");
+            Console.WriteLine(x.ToString());
+        }
+
+        private static void ToggleAllControlsTest()
+        {
+            var m = new NvidiaBroadcastManager();
+            m.GetAvailableToggleTypes();
+            m.Toggle(ToggleType.MicEffect1);
+            m.Toggle(ToggleType.MicEffect2);
+            m.Toggle(ToggleType.SpeakerEffect1);
+            m.Toggle(ToggleType.SpeakerEffect2);
+            m.Toggle(ToggleType.CameraEffect1);
+            m.Toggle(ToggleType.CameraEffect2);
         }
     }
 }

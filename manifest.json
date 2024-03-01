@@ -1,106 +1,32 @@
 ﻿{
     "Actions": [
         {
-            "Icon": "Images/action20",
-            "Name": "Background Remover",
+            "Icon": "Images/nvidia_inactive",
+            "Name": "NVIDIA Broadcast Toggle",
             "States": [
                 {
-                    "Image": "Images/gray72",
-                    "TitleAlignment": "middle",
-                    "Title": "Background\nRemover",
-                    "FontSize": "7"
+                    "Image": "Images/nvidia_inactive",
+                    "TitleAlignment": "bottom",
+                    "Title": "",
+                    "FontSize": "9"
                 }
             ],
             "SupportedInMultiActions": false,
-            "Tooltip": "Toggles 'Remove the Background' in nVidia Broadcast.",
-            "UUID": "com.zaphop.nvidiabroadcast.backgroundremover"
-        },
-        {
-            "Icon": "Images/action20",
-            "Name": "Auto Frame",
-            "States": [
-                {
-                    "Image": "Images/gray72",
-                    "TitleAlignment": "middle",
-                    "Title": "Auto Frame",
-                    "FontSize": "7"
-                }
-            ],
-            "SupportedInMultiActions": false,
-            "Tooltip": "Toggles 'Auto Frame' in nVidia Broadcast.",
-            "UUID": "com.zaphop.nvidiabroadcast.autoframe"
-        },
-        {
-            "Icon": "Images/action20",
-            "Name": "Background Blur",
-            "States": [
-                {
-                    "Image": "Images/gray72",
-                    "TitleAlignment": "middle",
-                    "Title": "Background\nBlur",
-                    "FontSize": "7"
-                }
-            ],
-            "SupportedInMultiActions": false,
-            "Tooltip": "Toggles 'Background Blur' in nVidia Broadcast.",
-            "UUID": "com.zaphop.nvidiabroadcast.backgroundblur"
-        },
-        {
-            "Icon": "Images/action20",
-            "Name": "Background Replacement",
-            "States": [
-                {
-                    "Image": "Images/gray72",
-                    "TitleAlignment": "middle",
-                    "Title": "Background\nReplacement",
-                    "FontSize": "7"
-                }
-            ],
-            "SupportedInMultiActions": false,
-            "Tooltip": "Toggles 'Background Replacement' in nVidia Broadcast.",
-            "UUID": "com.zaphop.nvidiabroadcast.backgroundreplacement"
-        },
-        {
-            "Icon": "Images/action20",
-            "Name": "Vignette",
-            "States": [
-                {
-                    "Image": "Images/gray72",
-                    "TitleAlignment": "middle",
-                    "Title": "Vignette",
-                    "FontSize": "7"
-                }
-            ],
-            "SupportedInMultiActions": false,
-            "Tooltip": "Toggles 'Vignette' in nVidia Broadcast.",
-            "UUID": "com.zaphop.nvidiabroadcast.vignette"
-        },
-        {
-            "Icon": "Images/action20",
-            "Name": "Eye Contact",
-            "States": [
-                {
-                    "Image": "Images/gray72",
-                    "TitleAlignment": "middle",
-                    "Title": "Eye Contact",
-                    "FontSize": "7"
-                }
-            ],
-            "SupportedInMultiActions": false,
-            "Tooltip": "Toggles 'Eye Contact' in nVidia Broadcast.",
-            "UUID": "com.zaphop.nvidiabroadcast.eycontact"
+            "Tooltip": "Toggles the desired setting in NVIDIA Broadcast.",
+            "UUID": "com.zaphop.nvidiabroadcast.nvidiabroadcast"
         }
     ],
     "SDKVersion": 2,
     "Author": "Nick Pirocanac",
     "CodePath": "com.zaphop.nvidiabroadcast.exe",
-    "Description": "nVidia Broadcast Controller",
-    "Name": "nVidia Broadcast Controller",
-    "Category": "nVidia Broadcast",
+    "Description": "NVIDIA Broadcast Controller",
+    "Name": "NVIDIA Broadcast Controller",
+    "Category": "NVIDIA Broadcast",
     "CategoryIcon": "Images/categoryIcon",
     "Icon": "Images/zhgold288",
     "URL": "https://github.com/BackTrak/StreamDeckNvidiaBroadcastPlugin",
-    "Version": "1.1.0.2",
+    "Version": "2.0.0.0",
+    "PropertyInspectorPath": "PropertyInspector/PluginActionPI.html",
     "OS": [
         {
             "Platform": "windows",
