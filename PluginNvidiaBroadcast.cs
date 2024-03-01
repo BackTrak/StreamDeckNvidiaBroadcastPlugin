@@ -82,7 +82,6 @@ namespace com.zaphop.nvidiabroadcast
 
         public override void KeyReleased(KeyPayload payload) { }
 
-      
         public override void OnTick() 
         {
             UpdateToggleStatus();

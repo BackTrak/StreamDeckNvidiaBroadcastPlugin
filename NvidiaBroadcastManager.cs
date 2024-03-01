@@ -26,38 +26,6 @@ namespace com.zaphop.nvidiabroadcast
         [DllImport("shlwapi.dll", BestFitMapping = false, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = false, ThrowOnUnmappableChar = true)]
         public static extern int SHLoadIndirectString(string pszSource, StringBuilder pszOutBuf, int cchOutBuf, IntPtr ppvReserved);
 
-        //private readonly string _toggleName;
-        //private readonly string _configName;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="toggleResourceID">The Resource ID of the selection string from the combobox. This can be found by using Resource Hacker to find the resource text string. Locale is set by the current application globalization settings.</param>
-        /// <param name="configName">The string from the config file that indicates when the option is enabled</param>
-        //public NvidiaBroadcastManager()
-        //{
-            
-        //}
-
-        //private string GetToggleNameFromResourceID(NvidiaBroadcastResourceID toggleResourceID)
-        //{
-        //    var registryPath = "HKEY_LOCAL_MACHINE\\SOFTWARE\\NVIDIA Corporation\\Global\\NvBroadcast";
-
-        //    // Get NVidia Broadcast UI installation directory.
-        //    var exeLocation = (string) Registry.GetValue(registryPath, "RBXAppPath", null) ??
-        //        throw new Exception("Couldn't find NVidia Broadcast install location from: {registryPath}\\RBXAppPath");
-
-        //    // This specifier is documented here: https://learn.microsoft.com/en-us/windows/win32/api/shlwapi/nf-shlwapi-shloadindirectstring
-        //    var resourceFilename = $"@{exeLocation},-{(int) toggleResourceID}";
-
-        //    var resourceString = new StringBuilder(1024);
-
-        //    if (SHLoadIndirectString(resourceFilename, resourceString, 1024, IntPtr.Zero) != 0)
-        //        throw new KeyNotFoundException($"Couldn't look up resource id: {toggleResourceID}({(int) toggleResourceID}) from {resourceFilename}");
-
-        //    return resourceString.ToString();
-        //}
-
         public bool IsToggleEnabled(ToggleType toggle)
         {
             return toggle switch
@@ -72,15 +40,6 @@ namespace com.zaphop.nvidiabroadcast
                 _ => throw new NotSupportedException(toggle.ToString()),
             };
         }
-
-        //private bool IsSettingEnabled(string settingName)
-        //{
-        //    string configPath = System.Environment.ExpandEnvironmentVariables(@"%ProgramData%\\NVIDIA\\NVIDIABroadcast\\Settings\\NvVirtualCamera\\config.json");
-
-        //    var nvidiaConfig = JsonConvert.DeserializeObject<NvidiaBroadcastConfig>(File.ReadAllText(configPath));
-
-        //    return nvidiaConfig.RTXCamera.Streams.Exists(p => p.Effect.Exists(r => r.Name.Equals(settingName, StringComparison.InvariantCultureIgnoreCase)));
-        //}
 
         public void Toggle(ToggleType toggle)
         {
@@ -99,72 +58,20 @@ namespace com.zaphop.nvidiabroadcast
         [DllImport("user32.dll", EntryPoint = "GetDlgCtrlID", CharSet = CharSet.Auto)]
         static extern long GetDlgCtrlID(IntPtr hwnd);
 
-        
+        private bool GetWindowHandle(IntPtr windowHandle, IntPtr arrayListPtr)
+        {
+            GCHandle gch = GCHandle.FromIntPtr(arrayListPtr);
+
+            if (gch.Target is not List<IntPtr> windowHandles)
+                throw new ArgumentNullException(nameof(windowHandles));
+
+            windowHandles.Add(windowHandle);
+            return true;
+        }
 
         private bool ToggleSetting(ToggleType toggle)
         {
             var rootWindowHwnd = GetRootWindowFromNvidiaBroadcast();
-
-            //string toggleControlAutomationName = String.Empty;
-            //string toggleGroupName = String.Empty;
-
-            //switch (toggle)
-            //{
-            //    case ToggleType.MicEffect1:
-            //        toggleControlAutomationName = "Toggle first mic effect";
-            //        toggleGroupName = "MICROPHONE";
-            //        break;
-            //    case ToggleType.MicEffect2:
-            //        toggleControlAutomationName = "Toggle second mic effect";
-            //        toggleGroupName = "MICROPHONE";
-            //        break;
-            //    case ToggleType.SpeakerEffect1:
-            //        toggleControlAutomationName = "Toggle first speaker effect";
-            //        toggleGroupName = "SPEAKERS";
-            //        break;
-            //    case ToggleType.SpeakerEffect2:
-            //        toggleControlAutomationName = "Toggle second speaker effect";
-            //        toggleGroupName = "SPEAKERS";
-            //        break;
-            //    case ToggleType.CameraEffect1:
-            //        toggleControlAutomationName = "Toggle first camera effect";
-            //        toggleGroupName = "CAMERA";
-            //        break;
-            //    case ToggleType.CameraEffect2:
-            //        toggleControlAutomationName = "Toggle second camera effect";
-            //        toggleGroupName = "CAMERA";
-            //        break;
-            //    default:
-            //        throw new NotSupportedException(toggle.ToString());
-            //}
-
-
-
-            //using (var automation = new UIA3Automation())
-            //{
-            //    var mainWindow = automation.FromHandle(rootWindowHwnd);
-
-            //    ConditionFactory cf = new ConditionFactory(new UIA3PropertyLibrary());
-
-            //    var groupButton = mainWindow.FindFirstDescendant(cf.ByName(toggleGroupName)).AsButton();
-            //    groupButton.Invoke();
-
-            //    var toggleButton = mainWindow.FindFirstDescendant(cf.ByName(toggleControlAutomationName)).AsButton();
-            //    toggleButton.Invoke();
-            //}
-
-            //return true;
-
-
-            //FlaUI.Core.WindowsAPI.
-
-            //var ae = System.Windows.Automation.AutomationElement.FromHandle(rootWindowHwnd);
-
-            //Condition condition = new System.Windows.Automation.PropertyCondition(System.Windows.Automation.AutomationElement.NameProperty, "Toggle first mic effect");
-
-            //var c = ae.FindAll(System.Windows.Automation.TreeScope.Descendants, condition);
-
-            //((System.Windows.Forms.Button)c).Invoke();
 
             EnumedWindow callBackPtr = GetWindowHandle;
             var windowHandles = new List<IntPtr>();
@@ -173,85 +80,19 @@ namespace com.zaphop.nvidiabroadcast
 
             PInvoke.User32.EnumChildWindows(rootWindowHwnd, Marshal.GetFunctionPointerForDelegate(callBackPtr), GCHandle.ToIntPtr(listHandle));
 
-            //var x = User32.FindWindowEx(rootWindowHwnd, IntPtr.Zero, null, "Toggle first mic effect"); 
-
             foreach (var handle in windowHandles)
             {
                 if (User32.GetClassName(handle).Equals("Button", StringComparison.InvariantCultureIgnoreCase) == true)
                 {
-                    //var windowText = new StringBuilder(255);
-                    //SendMessage(handle, (uint)User32.WindowMessage.WM_GETTEXT, 255, windowText);
-
-                    //GetWindowCaption(handle, windowText, 255);
+                    // Get the control's Automation ID. 
                     var controlID = GetDlgCtrlID(handle);
 
                     if (controlID == (int) toggle)
                         User32.SendMessage(handle, User32.WindowMessage.WM_BM_CLICK, IntPtr.Zero, IntPtr.Zero);
-                    
-                    //Span<char> text = new Span<char>();
-                    //User32.GetWindowCaption(handle, text);
-
-                    //Console.WriteLine(windowText);
-
-                    //Console.WriteLine(controlID);
                 }   
             }
 
             return false;
-
-
-            //WINDOWPLACEMENT comboBoxLocation = default;
-
-            //// Find target combobox
-            //foreach (var handle in windowHandles)
-            //{
-            //    User32.WINDOWINFO pwi = default;
-            //    User32.GetWindowInfo(handle, ref pwi);
-
-            //    //Console.WriteLine($"className: {User32.GetClassName(handle)}");
-
-            //    if (User32.GetClassName(handle).Equals("ComboBox", StringComparison.InvariantCultureIgnoreCase) == true)
-            //    {
-            //        var windowText = new StringBuilder(255);
-            //        SendMessage(handle, (uint)User32.WindowMessage.WM_GETTEXT, 255, windowText);
-
-            //        if (windowText.ToString().IndexOf("name", StringComparison.InvariantCultureIgnoreCase) >= 0)
-            //        {
-            //            GetWindowPlacement(handle, ref comboBoxLocation);
-            //            break;
-            //        }
-            //    }
-            //}
-
-            //// No combobox found.
-            //if (comboBoxLocation.length == 0)
-            //    return false;
-
-            //IntPtr targetButtonHandle = IntPtr.Zero;
-
-            //// Find the button to the right of the ComboBox.
-            //foreach (var handle in windowHandles)
-            //{
-            //    if (User32.GetClassName(handle).Equals("Button", StringComparison.InvariantCultureIgnoreCase) == true)
-            //    {
-            //        WINDOWPLACEMENT buttonPlacement = default;
-            //        GetWindowPlacement(handle, ref buttonPlacement);
-
-            //        if (buttonPlacement.rcNormalPosition.top >= comboBoxLocation.rcNormalPosition.top
-            //            && buttonPlacement.rcNormalPosition.bottom <= comboBoxLocation.rcNormalPosition.bottom
-            //            && buttonPlacement.rcNormalPosition.left > comboBoxLocation.rcNormalPosition.right)
-            //        {
-            //            targetButtonHandle = handle;
-            //            break;
-            //        }
-            //    }
-            //}
-
-            ////Console.WriteLine($"targetButtonHandle: {targetButtonHandle.ToString("X")}");
-
-            //User32.SendMessage(targetButtonHandle, User32.WindowMessage.WM_BM_CLICK, IntPtr.Zero, IntPtr.Zero);
-
-            //return true;
         }
 
         private IntPtr GetRootWindowFromNvidiaBroadcast()
@@ -282,23 +123,6 @@ namespace com.zaphop.nvidiabroadcast
             }
 
             return rootWindowHwnd;
-        }
-
-        private bool GetWindowHandle(IntPtr windowHandle, IntPtr arrayListPtr)
-        {
-            GCHandle gch = GCHandle.FromIntPtr(arrayListPtr);
-
-            // Not sure how this even compiles... where does windowHandles come from??
-            if (gch.Target is not List<IntPtr> windowHandles)
-                throw new ArgumentNullException(nameof(windowHandles));
-
-            //var windowHandles = gch.Target as List<IntPtr>;
-
-            //if (windowHandles == null)
-            //    throw new ArgumentNullException(nameof(windowHandles));
-
-            windowHandles.Add(windowHandle);
-            return true;
         }
 
         internal List<ToggleType> GetAvailableToggleTypes()

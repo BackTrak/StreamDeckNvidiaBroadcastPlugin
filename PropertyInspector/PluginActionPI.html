@@ -13,6 +13,16 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TP6PESMT8V"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-TP6PESMT8V');
+    </script>
+
     <div class="sdpi-wrapper">
         <div class="sdpi-item" id="toggle_select">
             <div class="sdpi-item-label">Select Toggle</div>
@@ -22,36 +32,36 @@
     </div>
 
     <script>
-    
-    document.addEventListener('websocketCreate', function () {
-        websocket.addEventListener('message', function (event) {
-            console.log("Got message event!", event.data);
 
-            let message = JSON.parse(event.data);
+        document.addEventListener('websocketCreate', function () {
+            websocket.addEventListener('message', function (event) {
+                console.log("Got message event!", event.data);
 
-            if (message.event == "sendToPropertyInspector") {
-                //let payload = JSON.parse(message.payload);
-                console.log("payload", message.payload);
+                let message = JSON.parse(event.data);
 
-                $('#toggle').children().remove().end();
+                if (message.event == "sendToPropertyInspector") {
+                    //let payload = JSON.parse(message.payload);
+                    console.log("payload", message.payload);
 
-                //$('#toggle').append('<option value="">Default Output Device</option>');
+                    $('#toggle').children().remove().end();
 
-                message.payload.ToggleList.forEach((element) => {
-                    $('#toggle').append('<option value="' + element.ID + '">' + element.Name + '</option>');
-                });
+                    //$('#toggle').append('<option value="">Default Output Device</option>');
 
-                $('#toggle').val(message.payload.SelectedToggle).change();
+                    message.payload.ToggleList.forEach((element) => {
+                        $('#toggle').append('<option value="' + element.ID + '">' + element.Name + '</option>');
+                    });
 
-                // Set dropdown visibility once all the values and selected options have been set.
-                onSelectionChange();
-            }
+                    $('#toggle').val(message.payload.SelectedToggle).change();
+
+                    // Set dropdown visibility once all the values and selected options have been set.
+                    onSelectionChange();
+                }
+            });
+
+            sendPayloadToPlugin({
+                action: "getItems"
+            });
         });
-
-        sendPayloadToPlugin({
-            action: "getItems"
-        });
-    });
 
     </script>
 </body>

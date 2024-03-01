@@ -1,0 +1,383 @@
+
+Active Connections
+
+  Proto  Local Address          Foreign Address        State           PID
+  TCP    0.0.0.0:80             0.0.0.0:0              LISTENING       4
+ Can not obtain ownership information
+  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING       1396
+  RpcSs
+ [svchost.exe]
+  TCP    0.0.0.0:443            0.0.0.0:0              LISTENING       4
+ Can not obtain ownership information
+  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING       4
+ Can not obtain ownership information
+  TCP    0.0.0.0:623            0.0.0.0:0              LISTENING       8076
+ [LMS.exe]
+  TCP    0.0.0.0:1844           0.0.0.0:0              LISTENING       11936
+ [ElgatoAudioControlServer.exe]
+  TCP    0.0.0.0:2179           0.0.0.0:0              LISTENING       3132
+ [vmms.exe]
+  TCP    0.0.0.0:3389           0.0.0.0:0              LISTENING       1876
+  TermService
+ [svchost.exe]
+  TCP    0.0.0.0:5040           0.0.0.0:0              LISTENING       12928
+  CDPSvc
+ [svchost.exe]
+  TCP    0.0.0.0:5357           0.0.0.0:0              LISTENING       4
+ Can not obtain ownership information
+  TCP    0.0.0.0:7680           0.0.0.0:0              LISTENING       14880
+ Can not obtain ownership information
+  TCP    0.0.0.0:16992          0.0.0.0:0              LISTENING       8076
+ [LMS.exe]
+  TCP    0.0.0.0:27036          0.0.0.0:0              LISTENING       20832
+ [steam.exe]
+  TCP    0.0.0.0:28198          0.0.0.0:0              LISTENING       26164
+ [StreamDeck.exe]
+  TCP    0.0.0.0:49664          0.0.0.0:0              LISTENING       1140
+ [lsass.exe]
+  TCP    0.0.0.0:49665          0.0.0.0:0              LISTENING       1040
+ Can not obtain ownership information
+  TCP    0.0.0.0:49666          0.0.0.0:0              LISTENING       2184
+  EventLog
+ [svchost.exe]
+  TCP    0.0.0.0:49667          0.0.0.0:0              LISTENING       2216
+  Schedule
+ [svchost.exe]
+  TCP    0.0.0.0:49668          0.0.0.0:0              LISTENING       4224
+  SessionEnv
+ [svchost.exe]
+  TCP    0.0.0.0:49725          0.0.0.0:0              LISTENING       7316
+ [spoolsv.exe]
+  TCP    0.0.0.0:49744          0.0.0.0:0              LISTENING       1112
+ Can not obtain ownership information
+  TCP    0.0.0.0:54288          0.0.0.0:0              LISTENING       4
+ Can not obtain ownership information
+  TCP    127.0.0.1:1844         127.0.0.1:51001        ESTABLISHED     11936
+ [ElgatoAudioControlServer.exe]
+  TCP    127.0.0.1:23654        0.0.0.0:0              LISTENING       10824
+ [System]
+  TCP    127.0.0.1:23654        127.0.0.1:50670        CLOSE_WAIT      10824
+ [System]
+  TCP    127.0.0.1:27060        0.0.0.0:0              LISTENING       20832
+ [steam.exe]
+  TCP    127.0.0.1:28196        0.0.0.0:0              LISTENING       26164
+ [StreamDeck.exe]
+  TCP    127.0.0.1:28196        127.0.0.1:50991        ESTABLISHED     26164
+ [StreamDeck.exe]
+  TCP    127.0.0.1:28196        127.0.0.1:50997        ESTABLISHED     26164
+ [StreamDeck.exe]
+  TCP    127.0.0.1:28196        127.0.0.1:50998        ESTABLISHED     26164
+ [StreamDeck.exe]
+  TCP    127.0.0.1:28196        127.0.0.1:50999        ESTABLISHED     26164
+ [StreamDeck.exe]
+  TCP    127.0.0.1:28196        127.0.0.1:51004        ESTABLISHED     26164
+ [StreamDeck.exe]
+  TCP    127.0.0.1:28196        127.0.0.1:51008        ESTABLISHED     26164
+ [StreamDeck.exe]
+  TCP    127.0.0.1:28196        127.0.0.1:51009        ESTABLISHED     26164
+ [StreamDeck.exe]
+  TCP    127.0.0.1:28196        127.0.0.1:51021        ESTABLISHED     26164
+ [StreamDeck.exe]
+  TCP    127.0.0.1:28196        127.0.0.1:51032        ESTABLISHED     26164
+ [StreamDeck.exe]
+  TCP    127.0.0.1:49730        127.0.0.1:49731        ESTABLISHED     8076
+ [LMS.exe]
+  TCP    127.0.0.1:49731        127.0.0.1:49730        ESTABLISHED     8076
+ [LMS.exe]
+  TCP    127.0.0.1:49912        127.0.0.1:49913        ESTABLISHED     5036
+ [RiotClientServices.exe]
+  TCP    127.0.0.1:49913        127.0.0.1:49912        ESTABLISHED     5036
+ [RiotClientServices.exe]
+  TCP    127.0.0.1:49933        127.0.0.1:49934        ESTABLISHED     5036
+ [RiotClientServices.exe]
+  TCP    127.0.0.1:49934        127.0.0.1:49933        ESTABLISHED     5036
+ [RiotClientServices.exe]
+  TCP    127.0.0.1:49935        127.0.0.1:49936        ESTABLISHED     5036
+ [RiotClientServices.exe]
+  TCP    127.0.0.1:49936        127.0.0.1:49935        ESTABLISHED     5036
+ [RiotClientServices.exe]
+  TCP    127.0.0.1:49950        0.0.0.0:0              LISTENING       5036
+ [RiotClientServices.exe]
+  TCP    127.0.0.1:50100        127.0.0.1:62522        ESTABLISHED     15080
+ [vpnui.exe]
+  TCP    127.0.0.1:50113        0.0.0.0:0              LISTENING       20832
+ [steam.exe]
+  TCP    127.0.0.1:50113        127.0.0.1:50137        ESTABLISHED     20832
+ [steam.exe]
+  TCP    127.0.0.1:50115        0.0.0.0:0              LISTENING       20832
+ [steam.exe]
+  TCP    127.0.0.1:50115        127.0.0.1:50134        ESTABLISHED     20832
+ [steam.exe]
+  TCP    127.0.0.1:50134        127.0.0.1:50115        ESTABLISHED     22084
+ [steamwebhelper.exe]
+  TCP    127.0.0.1:50137        127.0.0.1:50113        ESTABLISHED     22084
+ [steamwebhelper.exe]
+  TCP    127.0.0.1:50670        127.0.0.1:23654        FIN_WAIT_2      13708
+ [chrome.exe]
+  TCP    127.0.0.1:50705        127.0.0.1:50706        ESTABLISHED     13832
+ [Zoom.exe]
+  TCP    127.0.0.1:50706        127.0.0.1:50705        ESTABLISHED     13832
+ [Zoom.exe]
+  TCP    127.0.0.1:50991        127.0.0.1:28196        ESTABLISHED     21588
+ [twitchstudiostreamdeck.exe]
+  TCP    127.0.0.1:50997        127.0.0.1:28196        ESTABLISHED     26164
+ [StreamDeck.exe]
+  TCP    127.0.0.1:50998        127.0.0.1:28196        ESTABLISHED     26164
+ [StreamDeck.exe]
+  TCP    127.0.0.1:50999        127.0.0.1:28196        ESTABLISHED     26164
+ [StreamDeck.exe]
+  TCP    127.0.0.1:51001        127.0.0.1:1844         ESTABLISHED     26164
+ [StreamDeck.exe]
+  TCP    127.0.0.1:51004        127.0.0.1:28196        ESTABLISHED     26164
+ [StreamDeck.exe]
+  TCP    127.0.0.1:51008        127.0.0.1:28196        ESTABLISHED     23780
+ [com.zaphop.lollogin.exe]
+  TCP    127.0.0.1:51009        127.0.0.1:28196        ESTABLISHED     4724
+ [com.zaphop.visualizer.exe]
+  TCP    127.0.0.1:51021        127.0.0.1:28196        ESTABLISHED     2348
+ [com.zaphop.nvidiabroadcast.exe]
+  TCP    127.0.0.1:51032        127.0.0.1:28196        ESTABLISHED     26164
+ [StreamDeck.exe]
+  TCP    127.0.0.1:51372        127.0.0.1:38501        SYN_SENT        26164
+ [StreamDeck.exe]
+  TCP    127.0.0.1:62522        0.0.0.0:0              LISTENING       7148
+ [vpnagent.exe]
+  TCP    127.0.0.1:62522        127.0.0.1:50100        ESTABLISHED     7148
+ [vpnagent.exe]
+  TCP    192.168.1.188:139      0.0.0.0:0              LISTENING       4
+ Can not obtain ownership information
+  TCP    192.168.1.188:49408    40.83.240.146:443      ESTABLISHED     7968
+  WpnService
+ [svchost.exe]
+  TCP    192.168.1.188:49869    40.83.240.146:443      ESTABLISHED     17084
+ [OneDrive.exe]
+  TCP    192.168.1.188:49927    162.247.241.2:443      CLOSE_WAIT      5036
+ [RiotClientServices.exe]
+  TCP    192.168.1.188:49946    162.247.241.2:443      CLOSE_WAIT      5036
+ [RiotClientServices.exe]
+  TCP    192.168.1.188:49967    40.83.240.146:443      ESTABLISHED     11696
+ [OneDrive.exe]
+  TCP    192.168.1.188:50124    162.254.193.102:27037  ESTABLISHED     20832
+ [steam.exe]
+  TCP    192.168.1.188:50317    13.86.58.123:443       CLOSE_WAIT      16540
+ [SystemSettings.exe]
+  TCP    192.168.1.188:50364    20.185.212.106:443     ESTABLISHED     20624
+ [Skype.exe]
+  TCP    192.168.1.188:50416    20.185.212.106:443     ESTABLISHED     20624
+ [Skype.exe]
+  TCP    192.168.1.188:50418    192.168.1.145:8009     ESTABLISHED     13708
+ [chrome.exe]
+  TCP    192.168.1.188:50569    168.61.148.205:9354    ESTABLISHED     20804
+ [ServiceHub.SettingsHost.exe]
+  TCP    192.168.1.188:50729    170.114.2.51:443       ESTABLISHED     13832
+ [Zoom.exe]
+  TCP    192.168.1.188:50760    34.202.253.140:443     ESTABLISHED     23652
+ [slack.exe]
+  TCP    192.168.1.188:50764    3.17.45.182:443        ESTABLISHED     23652
+ [slack.exe]
+  TCP    192.168.1.188:50766    3.17.45.182:443        ESTABLISHED     23652
+ [slack.exe]
+  TCP    192.168.1.188:50768    3.17.45.182:443        ESTABLISHED     23652
+ [slack.exe]
+  TCP    192.168.1.188:50769    3.17.45.182:443        ESTABLISHED     23652
+ [slack.exe]
+  TCP    192.168.1.188:50879    52.200.46.145:443      ESTABLISHED     23652
+ [slack.exe]
+  TCP    192.168.1.188:51117    172.64.155.249:443     ESTABLISHED     13708
+ [chrome.exe]
+  TCP    192.168.1.188:51119    172.64.147.34:443      TIME_WAIT       0
+  TCP    192.168.1.188:51120    146.75.80.193:443      ESTABLISHED     13708
+ [chrome.exe]
+  TCP    192.168.1.188:51125    172.64.155.249:443     ESTABLISHED     13708
+ [chrome.exe]
+  TCP    192.168.1.188:51324    3.129.123.235:443      ESTABLISHED     23652
+ [slack.exe]
+  TCP    192.168.1.188:51364    52.14.14.157:443       ESTABLISHED     23652
+ [slack.exe]
+  TCP    [::]:80                [::]:0                 LISTENING       4
+ Can not obtain ownership information
+  TCP    [::]:135               [::]:0                 LISTENING       1396
+  RpcSs
+ [svchost.exe]
+  TCP    [::]:443               [::]:0                 LISTENING       4
+ Can not obtain ownership information
+  TCP    [::]:445               [::]:0                 LISTENING       4
+ Can not obtain ownership information
+  TCP    [::]:623               [::]:0                 LISTENING       8076
+ [LMS.exe]
+  TCP    [::]:1844              [::]:0                 LISTENING       11936
+ [ElgatoAudioControlServer.exe]
+  TCP    [::]:2179              [::]:0                 LISTENING       3132
+ [vmms.exe]
+  TCP    [::]:3389              [::]:0                 LISTENING       1876
+  TermService
+ [svchost.exe]
+  TCP    [::]:5357              [::]:0                 LISTENING       4
+ Can not obtain ownership information
+  TCP    [::]:7680              [::]:0                 LISTENING       14880
+ Can not obtain ownership information
+  TCP    [::]:16992             [::]:0                 LISTENING       8076
+ [LMS.exe]
+  TCP    [::]:28198             [::]:0                 LISTENING       26164
+ [StreamDeck.exe]
+  TCP    [::]:49664             [::]:0                 LISTENING       1140
+ [lsass.exe]
+  TCP    [::]:49665             [::]:0                 LISTENING       1040
+ Can not obtain ownership information
+  TCP    [::]:49666             [::]:0                 LISTENING       2184
+  EventLog
+ [svchost.exe]
+  TCP    [::]:49667             [::]:0                 LISTENING       2216
+  Schedule
+ [svchost.exe]
+  TCP    [::]:49668             [::]:0                 LISTENING       4224
+  SessionEnv
+ [svchost.exe]
+  TCP    [::]:49725             [::]:0                 LISTENING       7316
+ [spoolsv.exe]
+  TCP    [::]:49744             [::]:0                 LISTENING       1112
+ Can not obtain ownership information
+  TCP    [::]:54288             [::]:0                 LISTENING       4
+ Can not obtain ownership information
+  TCP    [::1]:42050            [::]:0                 LISTENING       17996
+ [Microsoft.SharePoint.exe]
+  TCP    [::1]:49728            [::]:0                 LISTENING       7920
+ [jhi_service.exe]
+  TCP    [::1]:51371            [::1]:38501            SYN_SENT        26164
+ [StreamDeck.exe]
+  TCP    [2603:6000:8b00:878c:4d81:3457:87ef:d8ef]:49985  [2603:1036:2407:1::d]:443  ESTABLISHED     17996
+ [Microsoft.SharePoint.exe]
+  TCP    [2603:6000:8b00:878c:4d81:3457:87ef:d8ef]:50090  [2603:1030:10:4::e]:443  ESTABLISHED     16856
+ [PhoneExperienceHost.exe]
+  TCP    [2603:6000:8b00:878c:4d81:3457:87ef:d8ef]:50119  [2a01:111:f100:3000::a83e:1abf]:443  ESTABLISHED     20824
+ [Skype.exe]
+  TCP    [2603:6000:8b00:878c:4d81:3457:87ef:d8ef]:50404  [2607:f8b0:4023:140d::bc]:5228  ESTABLISHED     13708
+ [chrome.exe]
+  TCP    [2603:6000:8b00:878c:4d81:3457:87ef:d8ef]:50708  [2407:30c0:100:724:8cd6:6398:c289:2616]:443  ESTABLISHED     13832
+ [Zoom.exe]
+  TCP    [2603:6000:8b00:878c:4d81:3457:87ef:d8ef]:50732  [2620:123:2004:d::c0cc:d06]:5091  ESTABLISHED     3824
+ [Zoom.exe]
+  TCP    [2603:6000:8b00:878c:4d81:3457:87ef:d8ef]:50763  [2407:30c0:100:722:c0cf:cbc:2a16:495b]:443  CLOSE_WAIT      11840
+ [Zoom.exe]
+  TCP    [2603:6000:8b00:878c:4d81:3457:87ef:d8ef]:51030  [2a04:4e42::485]:443   ESTABLISHED     26164
+ [StreamDeck.exe]
+  TCP    [2603:6000:8b00:878c:4d81:3457:87ef:d8ef]:51031  [2a04:4e42:200::649]:443  ESTABLISHED     26164
+ [StreamDeck.exe]
+  TCP    [2603:6000:8b00:878c:4d81:3457:87ef:d8ef]:51124  [2606:4700::6812:82ec]:443  TIME_WAIT       0
+  TCP    [2603:6000:8b00:878c:4d81:3457:87ef:d8ef]:51179  [2600:1407:3c00:44::17dc:905b]:443  CLOSE_WAIT      14704
+ [SearchApp.exe]
+  TCP    [2603:6000:8b00:878c:4d81:3457:87ef:d8ef]:51180  [2600:1407:3c00:44::17dc:905b]:443  CLOSE_WAIT      14704
+ [SearchApp.exe]
+  TCP    [2603:6000:8b00:878c:4d81:3457:87ef:d8ef]:51252  [2607:f8b0:4007:803::2003]:443  CLOSE_WAIT      13708
+ [chrome.exe]
+  TCP    [2603:6000:8b00:878c:4d81:3457:87ef:d8ef]:51308  [2620:1ec:43::132]:443  TIME_WAIT       0
+  UDP    0.0.0.0:3389           *:*                                    1876
+  TermService
+ [svchost.exe]
+  UDP    0.0.0.0:3702           *:*                                    3872
+ [dashost.exe]
+  UDP    0.0.0.0:3702           *:*                                    4644
+  FDResPub
+ [svchost.exe]
+  UDP    0.0.0.0:3702           *:*                                    4644
+  FDResPub
+ [svchost.exe]
+  UDP    0.0.0.0:3702           *:*                                    3872
+ [dashost.exe]
+  UDP    0.0.0.0:5050           *:*                                    12928
+  CDPSvc
+ [svchost.exe]
+  UDP    0.0.0.0:5353           *:*                                    3400
+  Dnscache
+ [svchost.exe]
+  UDP    0.0.0.0:5353           *:*                                    11756
+ [chrome.exe]
+  UDP    0.0.0.0:5353           *:*                                    11756
+ [chrome.exe]
+  UDP    0.0.0.0:5355           *:*                                    3400
+  Dnscache
+ [svchost.exe]
+  UDP    0.0.0.0:27036          *:*                                    20832
+ [steam.exe]
+  UDP    0.0.0.0:54242          *:*                                    8968
+ [remoting_host.exe]
+  UDP    0.0.0.0:54455          *:*                                    13708
+ [chrome.exe]
+  UDP    0.0.0.0:55130          *:*                                    20824
+ [Skype.exe]
+  UDP    0.0.0.0:58677          *:*                                    4644
+  FDResPub
+ [svchost.exe]
+  UDP    0.0.0.0:59655          *:*                                    3872
+ [dashost.exe]
+  UDP    127.0.0.1:1900         *:*                                    5368
+  SSDPSRV
+ [svchost.exe]
+  UDP    127.0.0.1:50381        *:*                                    5368
+  SSDPSRV
+ [svchost.exe]
+  UDP    127.0.0.1:51780        *:*                                    7812
+  iphlpsvc
+ [svchost.exe]
+  UDP    127.0.0.1:55522        *:*                                    3824
+ [Zoom.exe]
+  UDP    127.0.0.1:55523        *:*                                    3824
+ [Zoom.exe]
+  UDP    127.0.0.1:55524        *:*                                    3824
+ [Zoom.exe]
+  UDP    192.168.1.188:137      *:*                                    4
+ Can not obtain ownership information
+  UDP    192.168.1.188:138      *:*                                    4
+ Can not obtain ownership information
+  UDP    192.168.1.188:1900     *:*                                    5368
+  SSDPSRV
+ [svchost.exe]
+  UDP    192.168.1.188:27036    *:*                                    20832
+ [steam.exe]
+  UDP    192.168.1.188:50380    *:*                                    5368
+  SSDPSRV
+ [svchost.exe]
+  UDP    [::]:3389              *:*                                    1876
+  TermService
+ [svchost.exe]
+  UDP    [::]:3702              *:*                                    4644
+  FDResPub
+ [svchost.exe]
+  UDP    [::]:3702              *:*                                    3872
+ [dashost.exe]
+  UDP    [::]:3702              *:*                                    3872
+ [dashost.exe]
+  UDP    [::]:3702              *:*                                    4644
+  FDResPub
+ [svchost.exe]
+  UDP    [::]:5353              *:*                                    11756
+ [chrome.exe]
+  UDP    [::]:5353              *:*                                    3400
+  Dnscache
+ [svchost.exe]
+  UDP    [::]:5355              *:*                                    3400
+  Dnscache
+ [svchost.exe]
+  UDP    [::]:54242             *:*                                    8968
+ [remoting_host.exe]
+  UDP    [::]:54455             *:*                                    13708
+ [chrome.exe]
+  UDP    [::]:55130             *:*                                    20824
+ [Skype.exe]
+  UDP    [::]:58678             *:*                                    4644
+  FDResPub
+ [svchost.exe]
+  UDP    [::]:59656             *:*                                    3872
+ [dashost.exe]
+  UDP    [::1]:1900             *:*                                    5368
+  SSDPSRV
+ [svchost.exe]
+  UDP    [::1]:50379            *:*                                    5368
+  SSDPSRV
+ [svchost.exe]
+  UDP    [fe80::b241:3ac6:17d2:fb17%8]:1900  *:*                                    5368
+  SSDPSRV
+ [svchost.exe]
+  UDP    [fe80::b241:3ac6:17d2:fb17%8]:50378  *:*                                    5368
+  SSDPSRV
+ [svchost.exe]
