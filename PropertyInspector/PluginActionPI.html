@@ -30,12 +30,9 @@
                 let message = JSON.parse(event.data);
 
                 if (message.event == "sendToPropertyInspector") {
-                    //let payload = JSON.parse(message.payload);
                     console.log("payload", message.payload);
 
                     $('#toggle').children().remove().end();
-
-                    //$('#toggle').append('<option value="">Default Output Device</option>');
 
                     message.payload.ToggleList.forEach((element) => {
                         $('#toggle').append('<option value="' + element.ID + '">' + element.Name + '</option>');
