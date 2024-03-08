@@ -8,7 +8,7 @@
                     "Image": "Images/nvidia_inactive",
                     "TitleAlignment": "bottom",
                     "Title": "",
-                    "FontSize": "9"
+                    "FontSize": "7"
                 }
             ],
             "SupportedInMultiActions": false,

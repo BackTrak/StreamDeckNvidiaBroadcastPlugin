@@ -32,24 +32,28 @@ namespace com.zaphop.nvidiabroadcast
             System.Threading.Thread.CurrentThread.CurrentCulture = ci;
             System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
 
-            Windows.Win32.PInvoke.SetThreadLocale(1046);
-            Windows.Win32.PInvoke.SetThreadUILanguage(1046); // This one did the trick!
+            //Windows.Win32.PInvoke.SetThreadUILanguage(1046); // This one did the trick!
 
             var x = Windows.Win32.PInvoke.GetThreadLocale();
 
-            Console.WriteLine(x.ToString());
+            Console.WriteLine("Thread locale: " + x.ToString());
+
+            var m = new NvidiaBroadcastManager();
+            var toggleList = m.GetLocalizedStrings();
         }
 
         private static void ToggleAllControlsTest()
         {
             var m = new NvidiaBroadcastManager();
-            m.GetAvailableToggleTypes();
-            m.Toggle(ToggleType.MicEffect1);
-            m.Toggle(ToggleType.MicEffect2);
-            m.Toggle(ToggleType.SpeakerEffect1);
-            m.Toggle(ToggleType.SpeakerEffect2);
-            m.Toggle(ToggleType.CameraEffect1);
-            m.Toggle(ToggleType.CameraEffect2);
+            
+            //var toggleTypes = m.GetAvailableToggleTypes();
+
+            m.Toggle("M:" + MicrophoneEffectType.NoiseRemoval);
+            m.Toggle("M:" + MicrophoneEffectType.RoomEchoRemoval);
+            m.Toggle("S:" + SpeakerEffectType.NoiseRemoval);
+            m.Toggle("S:" + SpeakerEffectType.RoomEchoRemoval);
+            m.Toggle("C:" + CameraEffectType.BackgroundRemoval);
+            m.Toggle("C:" + CameraEffectType.Vignette);
         }
     }
 }

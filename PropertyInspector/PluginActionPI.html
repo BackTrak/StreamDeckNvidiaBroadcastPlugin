@@ -34,14 +34,21 @@
 
                     $('#toggle').children().remove().end();
 
-                    message.payload.ToggleList.forEach((element) => {
-                        $('#toggle').append('<option value="' + element.ID + '">' + element.Name + '</option>');
+                    message.payload.Sections.forEach((element) => {
+                        $('#toggle').append('<optgroup label="' + element.SectionName + '">');
+
+                        element.Toggles.forEach((toggle) => {
+                            $('#toggle').append('<option value="' + toggle.Value + '">' + toggle.Name + '</option>');
+                        });
+
+                        $('#toggle').append('</optgroup>');
+                        $('#toggle').append('<optgroup label="   "></optgroup>');
                     });
 
                     $('#toggle').val(message.payload.SelectedToggle).change();
 
                     // Set dropdown visibility once all the values and selected options have been set.
-                    onSelectionChange();
+                    // onSelectionChange();
                 }
             });
 

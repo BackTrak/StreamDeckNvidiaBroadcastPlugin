@@ -13,7 +13,7 @@ namespace com.zaphop.nvidiabroadcast
         MicEffect2 = 32989, 
         SpeakerEffect1 = 32996,
         SpeakerEffect2 = 32988,
-        CameraEffect1 = 32779,
-        CameraEffect2 = 32916
+        CameraEffectSelected = 32779,
+        CameraEffectSelected2 = 32916
     }
 }
