@@ -18,13 +18,17 @@ namespace com.zaphop.nvidiabroadcast
     {
         private readonly NvidiaBroadcastManager _nvidiaBroadcastManager;
         private bool _wasEnabledOnLastTick = false;
+        private bool _wasErrorOnLastTick = false;
         private string _toggle = String.Empty;
+        private Dictionary<NvidiaBroadcastResourceID, string> _localizedStrings;
 
         public PluginNvidiaBroadcast(SDConnection connection, InitialPayload payload) : base(connection, payload)
         {
             UpdateSettings(payload.Settings);
 
             _nvidiaBroadcastManager = new NvidiaBroadcastManager();
+            _localizedStrings = _nvidiaBroadcastManager.GetLocalizedStrings();
+
             UpdateToggleStatus();
 
             connection.OnSendToPlugin += Connection_OnSendToPlugin;
@@ -36,11 +40,45 @@ namespace com.zaphop.nvidiabroadcast
                 SendActiveToggleOptions();
         }
 
+
+        private class ConfigurationOption
+        {
+            public string Name { get; set; }
+            public string Value { get; set; }
+            public bool Configured { get; set; }
+        }
+
+        private ConfigurationOption GetSelectionOption(NvidiaBroadcastResourceID section, NvidiaBroadcastResourceID option)
+        {
+            string sectionPart = section switch
+            {
+                NvidiaBroadcastResourceID.Camera => "C:",
+                NvidiaBroadcastResourceID.Microphone => "M:",
+                NvidiaBroadcastResourceID.Speakers => "S:",
+                _ => throw new NotSupportedException(section.ToString())
+            };
+
+            string icon = section switch
+            {
+                NvidiaBroadcastResourceID.Camera => "📷",
+                NvidiaBroadcastResourceID.Microphone => "🎤",
+                NvidiaBroadcastResourceID.Speakers => "🔉",
+                _ => throw new NotSupportedException(section.ToString())
+            };
+
+            var value = sectionPart + option.ToString();
+           
+            return new ConfigurationOption
+            {
+                Name = $"    {icon} {_localizedStrings[option]}",
+                Value = value,
+                Configured = _nvidiaBroadcastManager.IsToggleConfigured(value)
+            };
+        }
+
         private void SendActiveToggleOptions()
         {
             var localizedStrings = _nvidiaBroadcastManager.GetLocalizedStrings();
-
-           
 
             var toggleData = new
             {
@@ -52,12 +90,12 @@ namespace com.zaphop.nvidiabroadcast
                         SectionName = localizedStrings[NvidiaBroadcastResourceID.Camera],
                         Toggles = new[]
                         {
-                            new { Value = "C:" + NvidiaBroadcastResourceID.Vignette, Name = "    📷 " + localizedStrings[NvidiaBroadcastResourceID.Vignette] },
-                            new { Value = "C:" + NvidiaBroadcastResourceID.AutoFrame, Name = "    📷 " + localizedStrings[NvidiaBroadcastResourceID.AutoFrame] },
-                            new { Value = "C:" + NvidiaBroadcastResourceID.BackgroundBlur, Name = "    📷 " + localizedStrings[NvidiaBroadcastResourceID.BackgroundBlur] },
-                            new { Value = "C:" + NvidiaBroadcastResourceID.EyeContact, Name = "    📷 " + localizedStrings[NvidiaBroadcastResourceID.EyeContact] },
-                            new { Value = "C:" + NvidiaBroadcastResourceID.BackgroundRemoval, Name = "    📷 " + localizedStrings[NvidiaBroadcastResourceID.BackgroundRemoval] },
-                            new { Value = "C:" + NvidiaBroadcastResourceID.BackgroundReplacement, Name = "     📷 " + localizedStrings[NvidiaBroadcastResourceID.BackgroundReplacement] }
+                            GetSelectionOption(NvidiaBroadcastResourceID.Camera, NvidiaBroadcastResourceID.Vignette),
+                            GetSelectionOption(NvidiaBroadcastResourceID.Camera, NvidiaBroadcastResourceID.AutoFrame),
+                            GetSelectionOption(NvidiaBroadcastResourceID.Camera, NvidiaBroadcastResourceID.BackgroundBlur),
+                            GetSelectionOption(NvidiaBroadcastResourceID.Camera, NvidiaBroadcastResourceID.EyeContact),
+                            GetSelectionOption(NvidiaBroadcastResourceID.Camera, NvidiaBroadcastResourceID.BackgroundRemoval),
+                            GetSelectionOption(NvidiaBroadcastResourceID.Camera, NvidiaBroadcastResourceID.BackgroundReplacement)
                         }
                     },
                     new
@@ -65,8 +103,8 @@ namespace com.zaphop.nvidiabroadcast
                         SectionName = localizedStrings[NvidiaBroadcastResourceID.Microphone],
                         Toggles = new[]
                         {
-                            new { Value = "M:" + NvidiaBroadcastResourceID.NoiseRemoval, Name = "    🎤 " + localizedStrings[NvidiaBroadcastResourceID.NoiseRemoval] },
-                            new { Value = "M:" + NvidiaBroadcastResourceID.RoomEchoRemoval, Name = "    🎤 " + localizedStrings[NvidiaBroadcastResourceID.RoomEchoRemoval] },
+                            GetSelectionOption(NvidiaBroadcastResourceID.Microphone, NvidiaBroadcastResourceID.NoiseRemoval),
+                            GetSelectionOption(NvidiaBroadcastResourceID.Microphone, NvidiaBroadcastResourceID.RoomEchoRemoval)
                         }
                     },
                     new
@@ -74,8 +112,8 @@ namespace com.zaphop.nvidiabroadcast
                         SectionName = localizedStrings[NvidiaBroadcastResourceID.Speakers],
                         Toggles = new[]
                         {
-                            new { Value = "S:" + NvidiaBroadcastResourceID.NoiseRemoval, Name = "    🔉 " + localizedStrings[NvidiaBroadcastResourceID.NoiseRemoval] },
-                            new { Value = "S:" + NvidiaBroadcastResourceID.RoomEchoRemoval, Name = "    🔉 " + localizedStrings[NvidiaBroadcastResourceID.RoomEchoRemoval] },
+                            GetSelectionOption(NvidiaBroadcastResourceID.Speakers, NvidiaBroadcastResourceID.NoiseRemoval),
+                            GetSelectionOption(NvidiaBroadcastResourceID.Speakers, NvidiaBroadcastResourceID.RoomEchoRemoval)
                         }
                     }
                 }
@@ -197,18 +235,39 @@ namespace com.zaphop.nvidiabroadcast
             if (String.IsNullOrWhiteSpace(_toggle) == true)
                 return;
 
-            if (_nvidiaBroadcastManager.IsToggleEnabled(_toggle) == true)
+            if (_nvidiaBroadcastManager.IsToggleConfigured(_toggle) == false)
             {
-                if (_wasEnabledOnLastTick == false)
+                if (_wasErrorOnLastTick == false)
                 {
-                    Connection.SetImageAsync(Tools.FileToBase64("Images\\nvidia_active.png", true));
-                    _wasEnabledOnLastTick = true;
+                    SendActiveToggleOptions();
+                    Connection.SetImageAsync(Tools.FileToBase64("Images\\error.png", true));
+                    _wasErrorOnLastTick = true;
+                    _wasEnabledOnLastTick = false;
                 }
             }
-            else if (_wasEnabledOnLastTick == true)
+            else
             {
-                Connection.SetImageAsync(Tools.FileToBase64("Images\\nvidia_inactive.png", true));
-                _wasEnabledOnLastTick = false;
+                if (_wasErrorOnLastTick == true)
+                {
+                    SendActiveToggleOptions();
+                    Connection.SetImageAsync(Tools.FileToBase64("Images\\nvidia_inactive.png", true));
+                    _wasErrorOnLastTick = false;
+                    _wasEnabledOnLastTick = false;
+                }
+
+                if (_nvidiaBroadcastManager.IsToggleEnabled(_toggle) == true)
+                {
+                    if (_wasEnabledOnLastTick == false)
+                    {
+                        Connection.SetImageAsync(Tools.FileToBase64("Images\\nvidia_active.png", true));
+                        _wasEnabledOnLastTick = true;
+                    }
+                }
+                else if (_wasEnabledOnLastTick == true)
+                {
+                    Connection.SetImageAsync(Tools.FileToBase64("Images\\nvidia_inactive.png", true));
+                    _wasEnabledOnLastTick = false;
+                }
             }
         }
     }

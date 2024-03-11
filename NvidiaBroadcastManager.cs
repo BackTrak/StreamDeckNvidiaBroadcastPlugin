@@ -41,6 +41,35 @@ namespace com.zaphop.nvidiabroadcast
             };
         }
 
+        public bool IsToggleConfigured(string toggleString)
+        {
+            var toggle = ToggleType.None;
+            var toggleParts = toggleString.Split(':');
+
+            switch (toggleParts[0])
+            {
+                case "M":
+                    if (Enum.TryParse<MicrophoneEffectType>(toggleParts[1], out var microphoneEffect) == true)
+                        toggle = GetToggleTypeForEffect(microphoneEffect);
+                    break;
+
+                case "S":
+                    if (Enum.TryParse<SpeakerEffectType>(toggleParts[1], out var speakerEffect) == true)
+                        toggle = GetToggleTypeForEffect(speakerEffect);
+                    break;
+
+                case "C":
+                    if (Enum.TryParse<CameraEffectType>(toggleParts[1], out var cameraEffect) == true)
+                        toggle = GetToggleTypeForEffect(cameraEffect);
+                    break;
+
+                default:
+                    throw new NotSupportedException(toggleString);
+            }
+
+            return toggle != ToggleType.None;
+        }
+
         public bool IsToggleEnabled(string toggleString)
         {
             var toggleParts = toggleString.Split(':');
@@ -273,8 +302,8 @@ namespace com.zaphop.nvidiabroadcast
         //internal List<ToggleType> GetAvailableToggleTypes()
         //{
         //    var returnValue = new List<ToggleType>();
-            
-        //    if ((int) Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\NVIDIA Corporation\\NVIDIA Broadcast\\Settings", "MicEffect1", 3) < 3)
+
+        //    if ((int)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\NVIDIA Corporation\\NVIDIA Broadcast\\Settings", "MicEffect1", 3) < 3)
         //        returnValue.Add(ToggleType.MicEffect1);
 
         //    if ((int)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\NVIDIA Corporation\\NVIDIA Broadcast\\Settings", "MicEffect2", 3) < 3)

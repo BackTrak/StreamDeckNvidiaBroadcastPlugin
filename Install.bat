@@ -14,6 +14,7 @@ SET STREAM_DECK_LOAD_TIMEOUT=7
 dotnet build
 taskkill /f /im streamdeck.exe
 taskkill /f /im com.zaphop.nvidiabroadcast.exe
+taskkill /f /im com.zaphop.visualizer.exe
 timeout /t 2
 del %OUTPUT_DIR%\com.zaphop.nvidiabroadcast.streamDeckPlugin
 %DISTRIBUTION_TOOL% -b -i bin\x64\Debug\com.zaphop.nvidiabroadcast.sdPlugin -o %OUTPUT_DIR%

@@ -5,7 +5,7 @@
     <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover">
     <meta name=apple-mobile-web-app-capable content=yes>
     <meta name=apple-mobile-web-app-status-bar-style content=black>
-    <title>LolLogin Settings</title>
+    <title>NVIDIA Broadcast Settings</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/barraider/streamdeck-easypi@latest/src/sdpi.css">
     <script src="https://cdn.jsdelivr.net/gh/barraider/streamdeck-easypi@latest/src/sdtools.common.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
@@ -16,12 +16,19 @@
     <div class="sdpi-wrapper">
         <div class="sdpi-item" id="toggle_select">
             <div class="sdpi-item-label">Select Toggle</div>
-            <select class="sdProperty sdpi-item-value select" id="toggle" oninput="setSettings()">
+            <select class="sdProperty sdpi-item-value select" id="toggle" oninput="updateSettings()">
             </select>
+        </div>
+
+        <div class="sdpi-item" id="error" style="color: palevioletred; display: none;">
+            <div class="sdpi-item-label">Error</div>
+            <span>Effect not setup. Please add this effect to NVIDIA Broadcast to toggle it.</span>
         </div>
     </div>
 
     <script>
+
+        var g_configuredToggles = new Array();
 
         document.addEventListener('websocketCreate', function () {
             websocket.addEventListener('message', function (event) {
@@ -39,6 +46,7 @@
 
                         element.Toggles.forEach((toggle) => {
                             $('#toggle').append('<option value="' + toggle.Value + '">' + toggle.Name + '</option>');
+                            g_configuredToggles[toggle.Value] = toggle.Configured;
                         });
 
                         $('#toggle').append('</optgroup>');
@@ -47,8 +55,10 @@
 
                     $('#toggle').val(message.payload.SelectedToggle).change();
 
-                    // Set dropdown visibility once all the values and selected options have been set.
-                    // onSelectionChange();
+                    console.log(g_configuredToggles);
+
+                    // Update error message in case the user selects an effect that hasn't been configured.
+                    onSelectionChange();
                 }
             });
 
@@ -56,6 +66,22 @@
                 action: "getItems"
             });
         });
+
+        function updateSettings() {
+            setSettings();
+            onSelectionChange();
+        }
+
+        function onSelectionChange() {
+            console.log(g_configuredToggles);
+            console.log($('#toggle').val());
+            console.log(g_configuredToggles[$('#toggle').val()]);
+
+            if (g_configuredToggles[$('#toggle').val()] == false)
+                $('#error').show();
+            else
+                $('#error').hide();
+        }
 
     </script>
 </body>
