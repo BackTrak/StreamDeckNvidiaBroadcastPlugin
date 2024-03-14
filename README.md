@@ -10,6 +10,16 @@ To install, clone or download the repo.
 
 After installation, go into nVidia Broadcast and select up to two effects under the Microphone, Speakers or Camera tabs. Then add a control from the package to your stream deck. Select the toggle type that matches the effect in either position 1 or position 2 and you are ready to go!
 
+# Manual Installation
+
+If you have the plugin already installed, you can copy the contents of the .zip from the latest [release](https://github.com/BackTrak/StreamDeckNvidiaBroadcastPlugin/releases) into:
+
+`
+%APPDATA%\Elgato\StreamDeck\Plugins\com.zaphop.nvidiabroadcast.sdPlugin
+`
+
+Then restart StreamDeck (right click on taskbar StreamDeck icon, click Quit), or reboot your computer. 
+
 
 ### Thank Yous
 * BarRaider: https://github.com/BarRaider/streamdeck-tools
