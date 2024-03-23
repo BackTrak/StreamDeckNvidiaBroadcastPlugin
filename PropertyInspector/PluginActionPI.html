@@ -15,8 +15,28 @@
 <body>
     <div class="sdpi-wrapper">
         <div class="sdpi-item" id="toggle_select">
-            <div class="sdpi-item-label">Select Toggle</div>
+            <div class="sdpi-item-label">Effect</div>
             <select class="sdProperty sdpi-item-value select" id="toggle" oninput="updateSettings()">
+            </select>
+        </div>
+
+        <div class="sdpi-item" id="toggle_device" style="display: none;">
+            <div class="sdpi-item-label">Device</div>
+            <select class="sdProperty sdpi-item-value select" id="device" oninput="updateSettings()">
+            </select>
+        </div>
+
+        <div class="sdpi-item" id="toggle_resolution" style="display: none;">
+            <div class="sdpi-item-label">Resolution</div>
+            <select class="sdProperty sdpi-item-value select" id="resolution" oninput="updateSettings()">
+            </select>
+        </div>
+
+        <div class="sdpi-item" id="toggle_slot">
+            <div class="sdpi-item-label">Select Slot</div>
+            <select class="sdProperty sdpi-item-value select" id="slot" oninput="updateSettings()">
+                <option selected value="1">Slot 1</option>
+                <option value="2">Slot 2</option>
             </select>
         </div>
 
@@ -29,6 +49,19 @@
     <script>
 
         var g_configuredToggles = new Array();
+        var g_itemsToSections = new Array();
+        var g_selectedSection = null;
+        var g_selectedDevice = null;
+        var g_selectedResolution = null;
+
+        var g_defaultCameraSource;
+        var g_defaultCameraResolution;
+        var g_defaultSpeakerSource;
+        var g_defaultMicrophoneSource;
+
+        const c_sectionTypeMicrophone = 1075;
+        const c_sectionTypeSpeakers = 1076;
+        const c_sectionTypeCamera = 1072;
 
         document.addEventListener('websocketCreate', function () {
             websocket.addEventListener('message', function (event) {
@@ -47,6 +80,7 @@
                         element.Toggles.forEach((toggle) => {
                             $('#toggle').append('<option value="' + toggle.Value + '">' + toggle.Name + '</option>');
                             g_configuredToggles[toggle.Value] = toggle.Configured;
+                            g_itemsToSections[toggle.Value] = element;
                         });
 
                         $('#toggle').append('</optgroup>');
@@ -59,6 +93,20 @@
 
                     // Update error message in case the user selects an effect that hasn't been configured.
                     onSelectionChange();
+
+                    $('#device').val(message.payload.SelectedDevice).change();
+                    $('#resolution').val(message.payload.SelectedResolution).change();
+                    $('#slot').val(message.payload.SelectedSlot).change();
+
+                    g_selectedDevice = message.payload.SelectedDevice;
+                    g_selectedResolution = message.payload.SelectedResolution;
+
+                    g_defaultCameraSource = message.payload.DefaultCameraSource;
+                    g_defaultCameraResolution = message.payload.DefaultCameraResolution;
+                    g_defaultMicrophoneSource = message.payload.DefaultMicrophoneSource;
+                    g_defaultSpeakerSource = message.payload.DefaultSpeakerSource;
+
+
                 }
             });
 
@@ -73,14 +121,65 @@
         }
 
         function onSelectionChange() {
-            console.log(g_configuredToggles);
-            console.log($('#toggle').val());
-            console.log(g_configuredToggles[$('#toggle').val()]);
+            //console.log(g_configuredToggles);
+            //console.log($('#toggle').val());
+            //console.log(g_configuredToggles[$('#toggle').val()]);
 
-            if (g_configuredToggles[$('#toggle').val()] == false)
-                $('#error').show();
-            else
-                $('#error').hide();
+            //if (g_configuredToggles[$('#toggle').val()] == false)
+            //    $('#error').show();
+            //else
+            //    $('#error').hide();
+
+            let section = g_itemsToSections[$('#toggle').val()];
+
+            if (g_selectedSection == null || g_selectedSection.SectionName != section.SectionName) {
+                g_selectedSection = section;
+
+                if (section != null) {
+                    if (section.Devices !== 'undefined' && section.Devices.length > 0) {
+                        $('#toggle_device').show();
+
+                        $('#device').children().remove().end();
+
+                        section.Devices.forEach((element) => {
+                            $('#device').append('<option value="' + element + '">' + element + '</option>');
+                        });
+                    }
+                    else {
+                        $('#toggle_device').hide();
+                    }
+
+                    if (section.Resolutions !== 'undefined' && section.Resolutions.length > 0) {
+                        $('#toggle_resolution').show();
+
+                        $('#resolution').children().remove().end();
+
+                        section.Resolutions.forEach((element) => {
+                            $('#resolution').append('<option value="' + element + '">' + element + '</option>');
+                        });
+                    }
+                    else {
+                        $('#toggle_resolution').hide();
+                    }
+
+                    if (g_selectedSection.SectionType == c_sectionTypeSpeakers && (g_selectedDevice == null || g_selectedDevice.length == 0)) {
+                        $('#device').val(g_defaultSpeakerSource).change();
+                    }
+
+                    if (g_selectedSection.SectionType == c_sectionTypeMicrophone && (g_selectedDevice == null || g_selectedDevice.length == 0)) {
+                        $('#device').val(g_defaultMicrophoneSource).change();
+                    }
+
+                    if (g_selectedSection.SectionType == c_sectionTypeCamera && (g_selectedDevice == null || g_selectedDevice.length == 0)) {
+                        $('#device').val(g_defaultCameraSource).change();
+                    }
+
+                    if (g_selectedSection.SectionType == c_sectionTypeCamera && (g_selectedDevice == null || g_selectedResolution.length == 0)) {
+                        $('#resolution').val(g_defaultCameraResolution).change();
+                    }
+
+                }
+            }
         }
 
     </script>

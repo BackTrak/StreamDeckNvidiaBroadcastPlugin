@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace com.zaphop.nvidiabroadcast
+﻿namespace com.zaphop.nvidiabroadcast.Entities
 {
     /// <summary>
     /// These IDs are found by looking at the combobox in NVidia Broadcast under the camera effects tab, and then 
@@ -16,7 +10,7 @@ namespace com.zaphop.nvidiabroadcast
         AutoFrame = 188, // Auto frame
         BackgroundBlur = 186, // Background blur
         BackgroundReplacement = 187, // Background replacement
-        EyeContact = 32873, // Eye contact
+        EyeContact = 33079, // Eye contact 32873
         Vignette = 33048,
         VideoNoiseRemoval = 33078, // Video noise removal (beta)
         NoiseRemoval = 228, // Noise removal
